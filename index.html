@@ -14,8 +14,9 @@
             color: #c9d1d9; /* Light text */
             line-height: 1.6;
             scroll-behavior: smooth;
+            background-color: #0d1117; /* Dark background base */
         }
-       
+        
         /* --- Background Animation --- */
         @keyframes subtle-move {
             0% { background-position: 0% 0%; }
@@ -23,111 +24,102 @@
             100% { background-position: 0% 0%; }
         }
         .animated-background {
-            /* Faint gradient animation for depth in a dark theme */
+            /* Faint gradient animation for depth */
             background: linear-gradient(-45deg, #0d1117, #161b22, #0d1117);
             background-size: 400% 400%;
             animation: subtle-move 30s ease infinite;
         }
-       
-        /* --- NEON STYLING VARIABLES (Changed to Electric Magenta) --- */
+        
+        /* --- NEW COLOR PALETTE: VIBRANT TEAL/AQUA --- */
         :root {
-            --neon-primary: #FF00FF; /* Electric Magenta */
-            --neon-shadow: rgba(255, 0, 255, 0.8);
+            --neon-primary: #00E0FF; /* Vibrant Teal/Aqua */
+            --neon-shadow: rgba(0, 224, 255, 0.4);
+            --card-bg: #161b22;
+            --card-border: #30363d;
         }
 
-
-        /* --- Enhanced Typography and Styling --- */
-        h1 {
-            /* Controlled glow effect */
-            text-shadow: 0 0 10px var(--neon-shadow);
+        /* --- Global Style Enhancements --- */
+        .gradient-text {
+            color: var(--neon-primary); 
+            text-shadow: 0 0 5px var(--neon-shadow);
         }
+        
         .section-header {
-            /* Neon border accent */
-            border-bottom: 2px solid var(--neon-primary);
+            /* Clean line accent */
+            border-bottom: 2px solid var(--neon-primary); 
             padding-bottom: 0.5rem;
             margin-bottom: 2rem;
+            font-size: 1.75rem; /* Large text for main headings */
+            text-shadow: 0 0 5px var(--neon-shadow);
         }
-       
-        /* Base Card Styling for Interactivity */
+
+        /* --- Card (UX) Styling --- */
         .card {
-            background-color: #161b22; /* Slightly lighter dark background for cards */
-            border: 1px solid #30363d; /* Subtle border */
+            background-color: var(--card-bg); 
+            border: 1px solid var(--card-border); 
             transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
-           
-            /* Required for the mouse-follow glow effect */
             position: relative;
-            overflow: hidden;
-            isolation: isolate;
+            overflow: hidden; 
+            isolation: isolate; 
         }
         .card:hover {
-            transform: translateY(-5px);
-            /* Soft neon glow on card lift */
-            box-shadow: 0 0 25px rgba(255, 0, 255, 0.4);
-            border-color: var(--neon-primary); /* Border brightens on hover */
+            transform: translateY(-3px); /* Less aggressive lift */
+            box-shadow: 0 0 20px rgba(0, 224, 255, 0.3); /* Subtle blue glow */
+            border-color: var(--neon-primary); 
         }
 
-
-        /* --- Mouse Follow Glow Effect (Pseudo-element) --- */
+        /* Subtle Glow Animation for Interactive Elements (less distracting) */
         .card::after {
             content: '';
             position: absolute;
-            left: var(--mouse-x); /* Set by JS */
-            top: var(--mouse-y); /* Set by JS */
+            left: var(--mouse-x); 
+            top: var(--mouse-y); 
             transform: translate(-50%, -50%);
-            width: 400px; /* Larger glow size */
-            height: 400px;
-            /* Radial gradient creates the bright neon spotlight effect */
-            background: radial-gradient(circle at center, rgba(255, 0, 255, 0.4) 0%, rgba(255, 0, 255, 0) 70%);
+            width: 300px; 
+            height: 300px;
+            background: radial-gradient(circle at center, rgba(0, 224, 255, 0.3) 0%, rgba(0, 224, 255, 0) 70%);
             opacity: 0;
             transition: opacity 0.5s;
+            pointer-events: none; /* Crucial for better UX */
             z-index: 2;
         }
-
-
-        /* Content layer over the glow */
-        .card > * {
-            position: relative;
-            z-index: 3;
-        }
-
-
-        /* Activate glow on hover */
         .card:hover::after {
             opacity: 1;
         }
-
-
-        .gradient-text {
-            /* Neon primary color */
-            color: var(--neon-primary);
-            text-shadow: 0 0 5px rgba(255, 0, 255, 0.4);
-        }
-
-
-        .experience-company {
-            color: #94a3b8; /* A cool gray for company name */
-            font-style: italic;
-            font-size: 0.95rem;
-        }
-       
-        /* Button and Image border styling using the neon color */
+        
+        /* Button Styling */
         .neon-button {
             background-color: var(--neon-primary);
-            color: #161b22 !important; /* Dark text on bright button */
+            color: #0d1117 !important; 
+            font-weight: 700;
             transition: all 0.3s;
-            box-shadow: 0 0 10px rgba(255, 0, 255, 0.6);
+            box-shadow: 0 0 10px var(--neon-shadow);
         }
         .neon-button:hover {
-            box-shadow: 0 0 20px rgba(255, 0, 255, 0.8);
-            background-color: #ff33ff; /* Slightly lighter on hover */
+            box-shadow: 0 0 25px rgba(0, 224, 255, 0.8);
+            background-color: #33F3FF; 
         }
 
+        /* Skill Bar Styling */
+        .skill-bar-track {
+            background-color: #30363d;
+            height: 6px;
+            border-radius: 9999px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+        .skill-bar-fill {
+            height: 100%;
+            background-color: var(--neon-primary);
+            box-shadow: 0 0 5px var(--neon-shadow);
+            transition: width 1s ease-out;
+        }
 
         /* --- Scroll Animation Styles --- */
         .animate-on-scroll {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
         }
         .fade-in-up-end {
             opacity: 1;
@@ -137,248 +129,281 @@
 </head>
 <body class="animated-background">
 
-
-    <!-- Sticky Navigation Bar (Now immediately opaque for neatness) -->
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 py-4 bg-[#10141b]/95 shadow-lg">
+    <!-- Sticky Navigation Bar -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 py-4 bg-[#10141b]/95 shadow-lg shadow-[#000]/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
             <a href="#" class="text-2xl font-bold gradient-text hover:text-white transition duration-200">Kashinath Jada</a>
-            <div class="space-x-4 hidden sm:flex">
-                <!-- Navigation links use neon hover color change -->
-                <a href="#skills" class="text-gray-400 hover:text-[--neon-primary] transition duration-200">Skills</a>
-                <a href="#experience" class="text-gray-400 hover:text-[--neon-primary] transition duration-200">Experience</a>
-                <a href="#projects" class="text-gray-400 hover:text-[--neon-primary] transition duration-200">Projects</a>
-                <a href="#education" class="text-gray-400 hover:text-[--neon-primary] transition duration-200">Education</a>
+            <div class="space-x-4 hidden sm:flex font-medium">
+                <a href="#skills-sidebar" class="text-gray-400 hover:text-[--neon-primary] transition duration-200">Tech Stack</a>
+                <a href="#experience-main" class="text-gray-400 hover:text-[--neon-primary] transition duration-200">Experience</a>
+                <a href="#education-main" class="text-gray-400 hover:text-[--neon-primary] transition duration-200">Education</a>
+                <a href="#projects-main" class="text-gray-400 hover:text-[--neon-primary] transition duration-200">Projects</a>
+                <a href="#research-main" class="text-gray-400 hover:text-[--neon-primary] transition duration-200">Research</a>
             </div>
         </div>
     </nav>
 
-
     <!-- Main Container -->
     <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 pt-20">
 
-
-        <!-- Header/Hero Section -->
-        <header id="hero" class="text-center py-16 rounded-xl mb-12 card animate-on-scroll">
-            <!-- Professional Image Updated and styled with neon border -->
-            <img src="https://lh3.googleusercontent.com/gg/AAHar4cb0OSjsJDn1M_t1e_48atGnhEJDtTAEWIf_PQPfmhaWgqSghh9aWpmIxt2aukiQ3cFVPMy1W7fThCU8Z9P5JzWkkbUJXeWaKYMURK1rPP8DFP9IKVHrMk8gGrE0yq9HgsYbkpKPkSVU9aISjI8-9_YCPcwi9HF7txyKbXhmAQdOx7u_jSKVO4wsx_GlAu6RnYnbXn8FA_vi_W5v5oBEHVRb7dE4PxIEFLn7UnhgKpc2iSa6sLz_4qSvdBHb5l3j7ExnOCq8AS4ZSuiQP4V9V5DqI-GesfBbYfajU0AyV4qO3zuYhis1ZU2--96Pz44jZBUaPn5zAGH0vjKUQ_ClWZl=s1024-rj"
-                 alt="Kashinath Jada Professional Photo"
-                 class="w-28 h-28 mx-auto mb-6 rounded-full object-cover border-4 border-[--neon-primary] shadow-lg shadow-[--neon-shadow]/50">
+        <!-- 1. Header/Hero Section (Full Width, Centered) -->
+        <header id="hero" class="text-center py-16 rounded-2xl mb-12 card animate-on-scroll border-2 border-transparent hover:border-[--neon-primary]/50">
+            <!-- Professional Image - Using your provided URL -->
+            <img src="https://lh3.googleusercontent.com/gg/AAHar4cb0OSjsJDn1M_t1e_48atGnhEJDtTAEWIf_PQPfmhaWgqSghh9aWpmIxt2aukiQ3cFVPMy1W7fThCU8Z9P5JzWkkbUJXeWaKYMURK1rPP8DFP9IKVHrMk8gGrE0yq9HgsYbkpKPkSVU9aISjI8-9_YCPcwi9HF7txyKbHhmAQdOx7u_jSKVO4wsx_GlAu6RnYnbXn8FA_vi_W5v5oBEHVRb7dE4PxIEFLn7UnhgKpc2iSa6sLz_4qSvdBHb5l3j7ExnOCq8AS4ZSuiQP4V9V5DqI-GesfBbYfajU0AyV4qO3zuYhis1ZU2--96Pz44jZBUaPn5zAGH0vjKUQ_ClWZl=s1024-rj" 
+                 alt="Kashinath Jada Professional Photo" 
+                 class="w-32 h-32 mx-auto mb-6 rounded-full object-cover border-4 border-[--neon-primary] shadow-xl shadow-[--neon-shadow]/70">
                  
-            <h1 class="text-5xl font-extrabold mb-2 text-white">Kashinath Jada</h1>
-            <h2 class="text-2xl font-semibold mb-4 gradient-text">Data Engineer | AI & Automation Specialist</h2>
-            <p class="max-w-3xl mx-auto text-gray-400">
-                Data Engineer specializing in designing, building, and optimizing robust data pipelines for <b>Blue Cross Blue Shield (BCBS) member and policy data</b>. Expertise in <b>Python, AWS (Glue, S3, Lambda, SageMaker)</b>, ETL workflows, and integrating <b>FHIR-based standards</b> for scalable, secure, and data-driven healthcare solutions.
+            <h1 class="text-6xl font-extrabold mb-2 text-white tracking-tight">Kashinath Jada</h1>
+            <h2 class="text-2xl font-medium mb-4 gradient-text">Data Engineer | AI & Automation Specialist</h2>
+            <p class="max-w-4xl mx-auto text-gray-400 text-lg">
+                Highly focused Data Engineer specializing in building and optimizing robust data pipelines for <b>Blue Cross Blue Shield (BCBS) member and policy data</b>. Leveraging <b>Python, AWS (Glue, S3, Lambda, SageMaker)</b>, and **FHIR standards** to deliver scalable, secure, and predictive healthcare data solutions.
             </p>
-            <div class="mt-8 flex justify-center space-x-4">
-                <!-- Buttons updated to neon style -->
-                <a href="mailto:kashinathjada@gmail.com" class="neon-button font-bold py-2 px-6 rounded-full transition duration-300 focus:outline-none focus:ring-4 focus:ring-[--neon-primary] focus:ring-offset-2 focus:ring-offset-[#161b22] shadow-lg">
-                    Email Me
+            <div class="mt-8 flex justify-center space-x-6">
+                <!-- Primary Call to Action -->
+                <a href="mailto:kashinathjada@gmail.com" class="neon-button py-3 px-8 rounded-full transition duration-300 shadow-xl">
+                    Get in Touch
                 </a>
-                <a href="#projects" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded-full transition duration-300 focus:outline-none focus:ring-4 focus:ring-[--neon-primary] focus:ring-offset-2 focus:ring-offset-[#161b22] shadow-lg">
-                    View Projects
-                </a>
-                <!-- LinkedIn Icon with neon hover -->
-                <a href="https://linkedin.com/in/kashinathj" target="_blank" class="text-gray-400 hover:text-[--neon-primary] transition duration-300 flex items-center p-2 rounded-full border border-transparent hover:border-[--neon-primary]" aria-label="LinkedIn Profile">
+                <!-- LinkedIn Icon -->
+                <a href="https://linkedin.com/in/kashinathj" target="_blank" class="text-gray-400 hover:text-[--neon-primary] transition duration-300 flex items-center p-3 rounded-full border border-gray-700 hover:border-[--neon-primary]" aria-label="LinkedIn Profile">
+                    <!-- LinkedIn SVG Icon -->
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4.784-3.56-4.784 0v5.604h-3v-11h3v1.765c1.396-2.586 7.784-2.203 7.784 3.821v5.414z"/></svg>
+                </a>
+                <!-- GitHub Icon -->
+                <a href="https://github.com/KashinathJ" target="_blank" class="text-gray-400 hover:text-[--neon-primary] transition duration-300 flex items-center p-3 rounded-full border border-gray-700 hover:border-[--neon-primary]" aria-label="GitHub Profile">
+                    <!-- GitHub SVG Icon -->
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.084-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.835 2.809 1.305 3.493.998.108-.77.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.467-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.006.404 2.292-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.234 1.911 1.234 3.221 0 4.609-2.807 5.624-5.479 5.923.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.2-6.085 8.2-11.387 0-6.627-5.373-12-12-12z"/></svg>
                 </a>
             </div>
         </header>
 
+        <!-- 2. Main Content Grid (Two Columns on large screens, Stacked on mobile) -->
+        <div class="lg:grid lg:grid-cols-4 lg:gap-12">
+            
+            <!-- Column 1: Enhanced Tech Stack (Sidebar - 1/4 width on desktop) -->
+            <aside id="skills-sidebar" class="lg:col-span-1 space-y-8 lg:sticky lg:top-24 h-fit mb-12 lg:mb-0 animate-on-scroll">
+                <h3 class="text-2xl font-bold border-b border-gray-700 pb-2 mb-4 text-white">Advanced Tech Stack</h3>
 
-        <!-- Technical Skills Section -->
-        <section id="skills" class="mb-12">
-            <h3 class="text-3xl font-bold section-header animate-on-scroll">Core Technical Skills</h3>
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                <!-- Skill Chips with neon hover effects -->
-                <div class="card p-3 text-center rounded-lg animate-on-scroll hover:border-[--neon-primary] hover:scale-[1.05] cursor-pointer">Python</div>
-                <div class="card p-3 text-center rounded-lg animate-on-scroll hover:border-[--neon-primary] hover:scale-[1.05] cursor-pointer">AWS (S3, Glue, Lambda, EC2)</div>
-                <div class="card p-3 text-center rounded-lg animate-on-scroll hover:border-[--neon-primary] hover:scale-[1.05] cursor-pointer">SQL / Data Warehousing</div>
-                <div class="card p-3 text-center rounded-lg animate-on-scroll hover:border-[--neon-primary] hover:scale-[1.05] cursor-pointer">Docker & Kubernetes</div>
-                <div class="card p-3 text-center rounded-lg animate-on-scroll hover:border-[--neon-primary] hover:scale-[1.05] cursor-pointer">Pandas & NumPy</div>
-                <div class="card p-3 text-center rounded-lg animate-on-scroll hover:border-[--neon-primary] hover:scale-[1.05] cursor-pointer">Apache Airflow (ETL)</div>
-                <div class="card p-3 text-center rounded-lg animate-on-scroll hover:border-[--neon-primary] hover:scale-[1.05] cursor-pointer">TensorFlow & Scikit-learn</div>
-                <div class="card p-3 text-center rounded-lg animate-on-scroll hover:border-[--neon-primary] hover:scale-[1.05] cursor-pointer">FHIR Standards</div>
-            </div>
-        </section>
-
-
-        <!-- Experience Section -->
-        <section id="experience" class="mb-12">
-            <h3 class="text-3xl font-bold section-header animate-on-scroll">Professional Experience</h3>
-            <div class="space-y-8">
-
-
-                <!-- Job 1: Reventics (Card has mouse glow animation) -->
-                <div class="card p-6 rounded-xl animate-on-scroll">
-                    <h4 class="text-xl font-semibold gradient-text">Healthcare Data Engineer - AI & Automation</h4>
-                    <p class="experience-company font-medium">Reventics | July 2024 - Present</p>
-                    <ul class="list-disc list-inside mt-3 space-y-2 text-gray-400">
-                        <li>Designed and implemented <b>AI-powered data pipelines</b> using <b>Python, Pandas, and Apache Airflow</b> to process BCBS member/policy data, significantly reducing prior authorization turnaround time.</li>
-                        <li>Integrated <b>FHIR-based standards</b> to ensure semantic interoperability and compliance with contemporary healthcare data standards.</li>
-                        <li>Developed <b>adaptive authorization forms and dynamic scheduling platforms</b> powered by condition-based logic for real-time, scalable decision-support systems.</li>
-                        <li>Ensured scalability and secure handling of sensitive health data using <b>containerized services (Docker/Kubernetes)</b> in cloud-native environments.</li>
-                    </ul>
+                <!-- Skill Category Card 1: Data & Pipeline Core -->
+                <div class="card p-4 rounded-xl">
+                    <h4 class="text-lg font-semibold flex items-center mb-2 gradient-text">
+                        <!-- Database Icon (SQL) -->
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10m0 0v10m0-10h16m0 0v10m0-10h4m-4 0v10M8 7v10m0 0v10m8-10v10m0 0v10m0-10h4m-4 0h4"/></svg>
+                        Data & Pipeline Core
+                    </h4>
+                    
+                    <p class="text-sm text-gray-400">Python/Pandas</p>
+                    <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 95%;"></div></div>
+                    
+                    <p class="text-sm text-gray-400 mt-3">SQL/ETL</p>
+                    <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 90%;"></div></div>
+                    
+                    <p class="text-sm text-gray-400 mt-3">Apache Airflow</p>
+                    <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 75%;"></div></div>
                 </div>
 
+                <!-- Skill Category Card 2: Cloud & Infrastructure -->
+                <div class="card p-4 rounded-xl">
+                    <h4 class="text-lg font-semibold flex items-center mb-2 gradient-text">
+                        <!-- Cloud Icon -->
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999L12 7l-1 5a3 3 0 01-6 0v0a3 3 0 01-3-3zM4 11h16"/></svg>
+                        Cloud & Infra (AWS/GCP)
+                    </h4>
+                    
+                    <p class="text-sm text-gray-400">AWS (Glue, S3, Lambda)</p>
+                    <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 85%;"></div></div>
+                    
+                    <p class="text-sm text-gray-400 mt-3">Docker & Kubernetes</p>
+                    <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 80%;"></div></div>
 
-                <!-- Internship: Rinex Tech Solutions (ML) -->
-                <div class="card p-6 rounded-xl animate-on-scroll">
-                    <h4 class="text-xl font-semibold gradient-text">Machine Learning Intern</h4>
-                    <p class="experience-company font-medium">Rinex Tech Solutions | May 2022 - Dec 2022</p>
-                    <ul class="list-disc list-inside mt-3 space-y-2 text-gray-400">
-                        <li>Developed and deployed <b>classification/regression models</b> using Scikit-learn and TensorFlow, managing the entire ML pipeline from data preparation to deployment.</li>
-                        <li>Utilized NumPy and Pandas for comprehensive <b>data preprocessing</b> to achieve high model accuracy.</li>
-                        <li>Visualized data insights using Matplotlib, Seaborn, and Plotly.</li>
-                    </ul>
+                    <p class="text-sm text-gray-400 mt-3">Git/CI-CD</p>
+                    <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 90%;"></div></div>
                 </div>
 
+                <!-- Skill Category Card 3: AI & ML Frameworks -->
+                <div class="card p-4 rounded-xl">
+                    <h4 class="text-lg font-semibold flex items-center mb-2 gradient-text">
+                        <!-- Brain Icon (AI) -->
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v14m-5 0V9l-12-3v14m0 0h12"/></svg>
+                        AI & ML Frameworks
+                    </h4>
+                    
+                    <p class="text-sm text-gray-400">TensorFlow/Scikit-learn</p>
+                    <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 85%;"></div></div>
 
-            </div>
-        </section>
+                    <p class="text-sm text-gray-400 mt-3">Deep Learning/CV</p>
+                    <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 75%;"></div></div>
 
-
-
-
-        <!-- Projects Section -->
-        <section id="projects" class="mb-12">
-            <h3 class="text-3xl font-bold section-header animate-on-scroll">Key Projects & Research</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-
-                <!-- Project 1: Health Monitoring System -->
-                <div class="card p-6 rounded-xl animate-on-scroll">
-                    <h4 class="text-xl font-semibold gradient-text">Scalable AI-Based Health Monitoring System</h4>
-                    <p class="text-gray-400 mb-3 text-sm">Aug 2024 - Present</p>
-                    <p class="text-gray-400">
-                        Automated BCBS member data processing using <b>AWS</b> and <b>Microsoft Fabric</b>. The system classifies policy details, expedites prior authorizations, and enables predictive analytics for improved healthcare workflow efficiency.
-                    </p>
+                    <p class="text-sm text-gray-400 mt-3">FHIR & Healthcare</p>
+                    <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 90%;"></div></div>
                 </div>
 
+            </aside>
 
-                <!-- Project 2: Drone-based Imaging -->
-                <div class="card p-6 rounded-xl animate-on-scroll">
-                    <h4 class="text-xl font-semibold gradient-text">Drone-based Hyperspectral Imaging for Disease Detection</h4>
-                    <p class="text-gray-400 mb-3 text-sm">Mar 2023 - Apr 2024</p>
-                    <p class="text-gray-400">
-                        Advanced precision agriculture by creating a drone-based hyperspectral imaging system with <b>DenseNet-201 CNN</b>. This project focuses on the early detection of sheath blight disease in rice crops, combining deep learning and remote sensing.
-                    </p>
-                </div>
+            <!-- Column 2: Experience, Education, Projects, & Research (Main Narrative - 3/4 width on desktop) -->
+            <main class="lg:col-span-3 space-y-12">
+                
+                <!-- Experience Section -->
+                <section id="experience-main" class="animate-on-scroll">
+                    <h3 class="section-header">Professional Experience</h3>
+                    <div class="space-y-8">
+
+                        <!-- Job 1: Reventics -->
+                        <div class="card p-6 rounded-xl animate-on-scroll border-l-4 border-l-[--neon-primary]">
+                            <h4 class="text-2xl font-bold gradient-text">Healthcare Data Engineer - AI & Automation</h4>
+                            <p class="text-gray-400 font-medium italic mb-3">Reventics | Hyderabad, India | July 2024 - Present</p>
+                            <ul class="list-disc list-outside ml-5 space-y-2 text-gray-400">
+                                <li>Architected and deployed **AI-powered data pipelines (Python/Airflow) to process BCBS member/policy data, drastically reducing prior authorization turnaround time and boosting accuracy.</li>
+                                <li>Established data governance and interoperability by implementing FHIR-based standards for seamless data exchange across payer-provider systems.</li>
+                                <li>Engineered **real-time decision-support systems** for dynamic scheduling and adaptive authorization using clinical rule-based logic.</li>
+                                <li>Ensured security, scalability, and resilience using **Docker and Kubernetes** for high-availability data processing in a cloud-native environment.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Internship: Rinex Tech Solutions (ML) -->
+                        <div class="card p-6 rounded-xl animate-on-scroll">
+                            <h4 class="text-xl font-bold gradient-text">Machine Learning Intern</h4>
+                            <p class="text-gray-400 font-medium italic mb-3">Rinex Tech Solutions | Hyderabad | May 2022 - Dec 2022</p>
+                            <ul class="list-disc list-outside ml-5 space-y-2 text-gray-400 text-sm">
+                                <li>Developed and validated classification/regression models using Scikit-learn and TensorFlow across the full ML pipeline.</li>
+                                <li>Executed comprehensive data preprocessing via NumPy and Pandas, resulting in high model accuracy metrics.</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Internship: Nuevera Infotech (Web Dev) -->
+                        <div class="card p-6 rounded-xl animate-on-scroll">
+                            <h4 class="text-xl font-bold gradient-text">Web Development Intern</h4>
+                            <p class="text-gray-400 font-medium italic mb-3">Nuevera Infotech | Hyderabad | Jan 2022 - Feb 2022</p>
+                            <ul class="list-disc list-outside ml-5 space-y-2 text-gray-400 text-sm">
+                                <li>Created responsive, user-friendly websites with JavaScript, CSS, and HTML, emphasizing accessibility and cross-browser compatibility.</li>
+                                <li>Debugged and optimized front-end code for speed and usability, collaborating with designers on pixel-perfect layouts.</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </section>
+                
+                <!-- Education Section (Now in the main column, with full details) -->
+                <section id="education-main" class="animate-on-scroll">
+                    <h3 class="section-header">Academic Background</h3>
+                    <div class="space-y-6">
+                        
+                        <!-- B.Tech Card -->
+                        <div class="card p-6 rounded-xl border-l-4 border-l-white/50">
+                            <h4 class="text-xl font-bold text-white">Bachelor of Technology in Artificial Intelligence</h4>
+                            <p class="text-lg gradient-text font-medium">Vidya Jyothi Institute of Technology, Hyderabad</p>
+                            <p class="text-gray-500 italic mt-1 mb-3">Nov 2020 - Apr 2024 | **CGPA: 8.8/10</p>
+                            <p class="text-gray-400 text-sm">Key coursework included Machine Learning, Data Science, Deep Learning, Python Programming, and Computer Vision.</p>
+                        </div>
+                        
+                        <!-- Intermediate Card -->
+                        <div class="card p-6 rounded-xl border-l-4 border-l-white/50">
+                            <h4 class="text-xl font-bold text-white">Intermediate - MPC (Maths, Physics, Chemistry)</h4>
+                            <p class="text-lg gradient-text font-medium">Sri Chaitanya Junior College, Bowrampet</p>
+                            <p class="text-gray-500 italic mt-1 mb-3">Apr 2018 - Apr 2020 | **Percentage: 94%</p>
+                            <p class="text-gray-400 text-sm">Focused on developing strong problem-solving and analytical skills across core scientific subjects.</p>
+                        </div>
+
+                        <!-- SSC Card -->
+                        <div class="card p-6 rounded-xl border-l-4 border-l-white/50">
+                            <h4 class="text-xl font-bold text-white">Secondary School Certificate (ICSE Board)</h4>
+                            <p class="text-lg gradient-text font-medium">Sri Sai Public School, Patancheru</p>
+                            <p class="text-gray-500 italic mt-1 mb-3">Apr 2009 - Apr 2018 | **Percentage: 85%</p>
+                            <p class="text-gray-400 text-sm">Built a foundational interest in technology and computing principles alongside strong fundamentals in English and Mathematics.</p>
+                        </div>
+
+                    </div>
+                </section>
 
 
-                <!-- Project 3: Age and Gender Detection -->
-                <div class="card p-6 rounded-xl animate-on-scroll">
-                    <h4 class="text-xl font-semibold gradient-text">Age and Gender Detection using Computer Vision</h4>
-                    <p class="text-gray-400 mb-3 text-sm">May 2022 - Nov 2022</p>
-                    <p class="text-gray-400">
-                        Developed a real-time demographic analysis model utilizing <b>OpenCV and TensorFlow</b> to accurately predict age and gender from images.
-                    </p>
-                </div>
+                <!-- Projects Section -->
+                <section id="projects-main" class="animate-on-scroll">
+                    <h3 class="section-header">Key Data & AI Projects</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
+                        <!-- Project 1: Health Monitoring System -->
+                        <div class="card p-6 rounded-xl animate-on-scroll">
+                            <h4 class="text-xl font-semibold gradient-text">Scalable AI-Based Health Monitoring System</h4>
+                            <p class="text-gray-500 mb-3 text-sm">Aug 2024 - Present</p>
+                            <p class="text-gray-400">
+                                Automated data classification and predictive analytics for BCBS policy details using **AWS services and Microsoft Fabric** to improve clinical workflow efficiency and decision-making.
+                            </p>
+                        </div>
 
-                <!-- Research Publication -->
-                <div class="card p-6 rounded-xl border-l-4 border-l-[--neon-primary] animate-on-scroll">
-                    <h4 class="text-xl font-semibold text-yellow-400">Research Publication</h4>
-                    <p class="text-gray-400 mt-1">
-                        <b>High-precision plant disease classification</b> via drone-enabled hyperspectral imaging using DenseNet-201. (IRJMETS-indexed)
-                    </p>
-                    <p class="text-gray-500 text-sm mt-2">
-                        *This demonstrates expertise in deep learning, computer vision, and data-driven precision agriculture.*
-                    </p>
-                </div>
+                        <!-- Project 2: Drone-based Imaging -->
+                        <div class="card p-6 rounded-xl animate-on-scroll">
+                            <h4 class="text-xl font-semibold gradient-text">Drone-based Hyperspectral Imaging for Disease Detection</h4>
+                            <p class="text-gray-500 mb-3 text-sm">Mar 2023 - Apr 2024</p>
+                            <p class="text-gray-400">
+                                Advanced precision agriculture by creating a drone-based system with **DenseNet-201 CNN** for the early detection of sheath blight disease in rice crops using remote sensing.
+                            </p>
+                        </div>
 
+                        <!-- Project 3: Age and Gender Detection -->
+                        <div class="card p-6 rounded-xl animate-on-scroll">
+                            <h4 class="text-xl font-semibold gradient-text">Age and Gender Detection Using Computer Vision</h4>
+                            <p class="text-gray-500 mb-3 text-sm">May 2022 - Nov 2022</p>
+                            <p class="text-gray-400">
+                                Developed a computer vision-based model utilizing **OpenCV and TensorFlow** to accurately predict age and gender from images, enabling real-time demographic analysis.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Dedicated Research Section -->
+                <section id="research-main" class="animate-on-scroll">
+                    <h3 class="section-header">Research Publication</h3>
+                    <div class="card p-6 rounded-xl border-l-4 border-l-yellow-400">
+                        <h4 class="text-2xl font-bold text-yellow-400">High-precision plant disease classification</h4>
+                        <p class="text-gray-400 mt-2 text-lg">
+                            Published research on drone-enabled hyperspectral imaging using the **DenseNet-201 convolutional neural network** for early sheath blight detection in rice crops.
+                        </p>
+                        <p class="text-gray-500 text-sm mt-3">
+                            This work advances data-driven precision agriculture and autonomous crop health monitoring. **(IRJMETS-indexed ID: IRJMETS60100089134)**
+                        </p>
+                    </div>
+                </section>
 
-            </div>
-        </section>
+            </main>
 
-
-        <!-- Education/Certifications Section -->
-        <section id="education" class="mb-12">
-            <h3 class="text-3xl font-bold section-header animate-on-scroll">Education & Achievements</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-
-                <!-- Education Card -->
-                <div class="card p-6 rounded-xl animate-on-scroll">
-                    <h4 class="text-xl font-semibold text-white">B.Tech in Artificial Intelligence</h4>
-                    <p class="experience-company">Vidya Jyothi Institute of Technology, Hyderabad</p>
-                    <p class="text-gray-400 text-sm mt-1">Nov 2020 - Apr 2024 | CGPA: 8.8/10</p>
-                    <ul class="list-disc list-inside mt-3 text-gray-400 text-sm">
-                        <li>Relevant Coursework: Machine Learning, Data Science, Deep Learning.</li>
-                        <li>Strong foundation in Python Programming and Computer Vision.</li>
-                    </ul>
-                </div>
-
-
-                <!-- Certifications/Achievements Card -->
-                <div class="card p-6 rounded-xl animate-on-scroll">
-                    <h4 class="text-xl font-semibold text-white">Certifications & Achievements</h4>
-                    <ul class="list-disc list-inside mt-3 space-y-2 text-gray-400">
-                        <li><b>Machine Learning with Python</b> - IBM (Mar 2021)</li>
-                        <li><b>Design and Analysis of Algorithms</b> - IIT Bombay (May 2022)</li>
-                        <li>Cloud & Dev Community Training - Microsoft / Devtown</li>
-                        <li>Student Partnership Program (SPP) - IIT Roorkee | Jan 2023</li>
-                    </ul>
-                </div>
-
-
-            </div>
-        </section>
-
+        </div> <!-- End Main Content Grid -->
 
         <!-- Footer -->
-        <footer class="text-center py-6 border-t border-gray-700 mt-12">
+        <footer class="text-center py-6 border-t border-gray-800 mt-12">
             <p class="text-sm text-gray-500">
-                Built by Kashinath Jada | Connect with me on <a href="https://linkedin.com/in/kashinathj" target="_blank" class="gradient-text hover:text-white">LinkedIn</a>
+                Data & AI Portfolio | Kashinath Jada
             </p>
         </footer>
 
-
     </div>
 
-
     <script>
-        // --- 1. Sticky Navigation Bar Logic (Simplified for immediate opaque look) ---
-        // Since the navbar is now immediately opaque, we only use JS for general interactions/scroll revealing.
-        // We can remove the complex IntersectionObserver for the navbar background change.
-       
-        // --- 2. Scroll Reveal Animation Logic (Fade in/Slide up) ---
+        // --- 1. Scroll Reveal Animation Logic (Fade in/Slide up) ---
         const scrollObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('fade-in-up-end');
-                    scrollObserver.unobserve(entry.target);
+                    scrollObserver.unobserve(entry.target); 
                 }
             });
-        }, { threshold: 0.1 });
-
+        }, { threshold: 0.1 }); 
 
         document.querySelectorAll('.animate-on-scroll').forEach(element => {
             scrollObserver.observe(element);
         });
 
-
-        // --- 3. Interactive Mouse Follow Glow Effect ---
+        // --- 2. Interactive Mouse Follow Glow Effect ---
         const interactiveCards = document.querySelectorAll('.card');
-
 
         interactiveCards.forEach(card => {
             card.addEventListener('mousemove', (e) => {
-                // Get mouse position relative to the card
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
-
-
-                // Set CSS variables for the ::after pseudo-element to follow
                 card.style.setProperty('--mouse-x', `${x}px`);
                 card.style.setProperty('--mouse-y', `${y}px`);
             });
         });
     </script>
 
-
 </body>
 </html>
-
-
-
