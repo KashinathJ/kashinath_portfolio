@@ -132,7 +132,12 @@
     <!-- Sticky Navigation Bar -->
     <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 py-4 bg-[#10141b]/95 shadow-lg shadow-[#000]/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold gradient-text hover:text-white transition duration-200">Kashinath Jada</a>
+            
+            <!-- Name Wrapper (Image removed from here) -->
+            <div class="flex items-center space-x-3">
+                <a href="#" class="text-2xl font-bold gradient-text hover:text-white transition duration-200">Kashinath Jada</a>
+            </div>
+
             <div class="space-x-4 hidden sm:flex font-medium">
                 <a href="#skills-sidebar" class="text-gray-400 hover:text-[--neon-primary] transition duration-200">Tech Stack</a>
                 <a href="#experience-main" class="text-gray-400 hover:text-[--neon-primary] transition duration-200">Experience</a>
@@ -146,12 +151,12 @@
     <!-- Main Container -->
     <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 pt-20">
 
-        <!-- 1. Header/Hero Section (Full Width, Centered) -->
+        <!-- 1. Header/Hero Section (Image added back, centered, above name) -->
         <header id="hero" class="text-center py-16 rounded-2xl mb-12 card animate-on-scroll border-2 border-transparent hover:border-[--neon-primary]/50">
-            <!-- Professional Image - Using your provided URL -->
-            <img src="https://lh3.googleusercontent.com/gg/AAHar4cb0OSjsJDn1M_t1e_48atGnhEJDtTAEWIf_PQPfmhaWgqSghh9aWpmIxt2aukiQ3cFVPMy1W7fThCU8Z9P5JzWkkbUJXeWaKYMURK1rPP8DFP9IKVHrMk8gGrE0yq9HgsYbkpKPkSVU9aISjI8-9_YCPcwi9HF7txyKbHhmAQdOx7u_jSKVO4wsx_GlAu6RnYnbXn8FA_vi_W5v5oBEHVRb7dE4PxIEFLn7UnhgKpc2iSa6sLz_4qSvdBHb5l3j7ExnOCq8AS4ZSuiQP4V9V5DqI-GesfBbYfajU0AyV4qO3zuYhis1ZU2--96Pz44jZBUaPn5zAGH0vjKUQ_ClWZl=s1024-rj" 
-                 alt="Kashinath Jada Professional Photo" 
-                 class="w-32 h-32 mx-auto mb-6 rounded-full object-cover border-4 border-[--neon-primary] shadow-xl shadow-[--neon-shadow]/70">
+            <!-- Profile Image added back, centered and above the name -->
+            <img src="https://lh3.googleusercontent.com/gg/AAHar4cb0OSjsJDn1M_t1e_48atGnhEJDtTAEWIf_PQPfmhaWgqSghh9aWpmIxt2aukiQ3cFVPMy1W7fThCU8Z9P5JzWkkbUJXeWaKYMURK1rPP8DFP9IKVHrMk8gGrE0yq9HgsYbkpKPkSVU9aISjI8-9_YCPcwi9HF7txyKbXhmAQdOx7u_jSKVO4wsx_GlAu6RnYnbXn8FA_vi_W5v5oBEHVRb7dE4PxIEFLn7UnhgKpc2iSa6sLz_4qSvdBHb5l3j7ExnOCq8AS4ZSuiQP4V9V5DqI-GesfBbYfajU0AyV4qO3zuYhis1ZU2--96Pz44dZBUaPn5zAGH0vjKUQ_ClWZl=s1024-rj" 
+                 alt="Kashinath Jada Profile Photo" 
+                 class="w-24 h-24 rounded-full object-cover mx-auto mb-4 border-4 border-[--neon-primary] shadow-lg shadow-[--neon-shadow]">
                  
             <h1 class="text-6xl font-extrabold mb-2 text-white tracking-tight">Kashinath Jada</h1>
             <h2 class="text-2xl font-medium mb-4 gradient-text">Data Engineer | AI & Automation Specialist</h2>
@@ -159,8 +164,8 @@
                 Highly focused Data Engineer specializing in building and optimizing robust data pipelines for <b>Blue Cross Blue Shield (BCBS) member and policy data</b>. Leveraging <b>Python, AWS (Glue, S3, Lambda, SageMaker)</b>, and **FHIR standards** to deliver scalable, secure, and predictive healthcare data solutions.
             </p>
             <div class="mt-8 flex justify-center space-x-6">
-                <!-- Primary Call to Action -->
-                <a href="mailto:kashinathjada@gmail.com" class="neon-button py-3 px-8 rounded-full transition duration-300 shadow-xl">
+                <!-- Primary Call to Action: UPDATED mailto link with subject -->
+                <a href="mailto:kashinathjada@gmail.com?subject=Inquiry%20regarding%20Data%20Engineering%20Portfolio" class="neon-button py-3 px-8 rounded-full transition duration-300 shadow-xl">
                     Get in Touch
                 </a>
                 <!-- LinkedIn Icon -->
@@ -252,8 +257,8 @@
                             <h4 class="text-2xl font-bold gradient-text">Healthcare Data Engineer - AI & Automation</h4>
                             <p class="text-gray-400 font-medium italic mb-3">Reventics | Hyderabad, India | July 2024 - Present</p>
                             <ul class="list-disc list-outside ml-5 space-y-2 text-gray-400">
-                                <li>Architected and deployed **AI-powered data pipelines (Python/Airflow) to process BCBS member/policy data, drastically reducing prior authorization turnaround time and boosting accuracy.</li>
-                                <li>Established data governance and interoperability by implementing FHIR-based standards for seamless data exchange across payer-provider systems.</li>
+                                <li>Architected and deployed **AI-powered data pipelines (Python/Airflow)** to process BCBS member/policy data, drastically reducing prior authorization turnaround time and boosting accuracy.</li>
+                                <li>Established data governance and interoperability by implementing **FHIR-based standards** for seamless data exchange across payer-provider systems.</li>
                                 <li>Engineered **real-time decision-support systems** for dynamic scheduling and adaptive authorization using clinical rule-based logic.</li>
                                 <li>Ensured security, scalability, and resilience using **Docker and Kubernetes** for high-availability data processing in a cloud-native environment.</li>
                             </ul>
@@ -264,8 +269,8 @@
                             <h4 class="text-xl font-bold gradient-text">Machine Learning Intern</h4>
                             <p class="text-gray-400 font-medium italic mb-3">Rinex Tech Solutions | Hyderabad | May 2022 - Dec 2022</p>
                             <ul class="list-disc list-outside ml-5 space-y-2 text-gray-400 text-sm">
-                                <li>Developed and validated classification/regression models using Scikit-learn and TensorFlow across the full ML pipeline.</li>
-                                <li>Executed comprehensive data preprocessing via NumPy and Pandas, resulting in high model accuracy metrics.</li>
+                                <li>Developed and validated **classification/regression models** using Scikit-learn and TensorFlow across the full ML pipeline.</li>
+                                <li>Executed comprehensive data preprocessing via NumPy and Pandas, resulting in **high model accuracy metrics**.</li>
                             </ul>
                         </div>
                         
@@ -274,7 +279,7 @@
                             <h4 class="text-xl font-bold gradient-text">Web Development Intern</h4>
                             <p class="text-gray-400 font-medium italic mb-3">Nuevera Infotech | Hyderabad | Jan 2022 - Feb 2022</p>
                             <ul class="list-disc list-outside ml-5 space-y-2 text-gray-400 text-sm">
-                                <li>Created responsive, user-friendly websites with JavaScript, CSS, and HTML, emphasizing accessibility and cross-browser compatibility.</li>
+                                <li>Created responsive, user-friendly websites with **JavaScript, CSS, and HTML**, emphasizing accessibility and cross-browser compatibility.</li>
                                 <li>Debugged and optimized front-end code for speed and usability, collaborating with designers on pixel-perfect layouts.</li>
                             </ul>
                         </div>
@@ -291,7 +296,7 @@
                         <div class="card p-6 rounded-xl border-l-4 border-l-white/50">
                             <h4 class="text-xl font-bold text-white">Bachelor of Technology in Artificial Intelligence</h4>
                             <p class="text-lg gradient-text font-medium">Vidya Jyothi Institute of Technology, Hyderabad</p>
-                            <p class="text-gray-500 italic mt-1 mb-3">Nov 2020 - Apr 2024 | **CGPA: 8.8/10</p>
+                            <p class="text-gray-500 italic mt-1 mb-3">Nov 2020 - Apr 2024 | **CGPA: 8.8/10**</p>
                             <p class="text-gray-400 text-sm">Key coursework included Machine Learning, Data Science, Deep Learning, Python Programming, and Computer Vision.</p>
                         </div>
                         
@@ -299,7 +304,7 @@
                         <div class="card p-6 rounded-xl border-l-4 border-l-white/50">
                             <h4 class="text-xl font-bold text-white">Intermediate - MPC (Maths, Physics, Chemistry)</h4>
                             <p class="text-lg gradient-text font-medium">Sri Chaitanya Junior College, Bowrampet</p>
-                            <p class="text-gray-500 italic mt-1 mb-3">Apr 2018 - Apr 2020 | **Percentage: 94%</p>
+                            <p class="text-gray-500 italic mt-1 mb-3">Apr 2018 - Apr 2020 | **Percentage: 94%**</p>
                             <p class="text-gray-400 text-sm">Focused on developing strong problem-solving and analytical skills across core scientific subjects.</p>
                         </div>
 
@@ -307,7 +312,7 @@
                         <div class="card p-6 rounded-xl border-l-4 border-l-white/50">
                             <h4 class="text-xl font-bold text-white">Secondary School Certificate (ICSE Board)</h4>
                             <p class="text-lg gradient-text font-medium">Sri Sai Public School, Patancheru</p>
-                            <p class="text-gray-500 italic mt-1 mb-3">Apr 2009 - Apr 2018 | **Percentage: 85%</p>
+                            <p class="text-gray-500 italic mt-1 mb-3">Apr 2009 - Apr 2018 | **Percentage: 85%**</p>
                             <p class="text-gray-400 text-sm">Built a foundational interest in technology and computing principles alongside strong fundamentals in English and Mathematics.</p>
                         </div>
 
@@ -317,11 +322,12 @@
 
                 <!-- Projects Section -->
                 <section id="projects-main" class="animate-on-scroll">
-                    <h3 class="section-header">Key Data & AI Projects</h3>
+                    <h3 class="section-header"> Projects</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-                        <!-- Project 1: Health Monitoring System -->
+                        <!-- Project 1: Health Monitoring System - Image removed the placeholder image in the current file as requested -->
                         <div class="card p-6 rounded-xl animate-on-scroll">
+
                             <h4 class="text-xl font-semibold gradient-text">Scalable AI-Based Health Monitoring System</h4>
                             <p class="text-gray-500 mb-3 text-sm">Aug 2024 - Present</p>
                             <p class="text-gray-400">
